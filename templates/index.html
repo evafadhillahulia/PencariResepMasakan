@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resep Favorit - Foodienus</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='Foodienus.png') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='Foodienus.png') }}">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f8f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #5cb85c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 40px;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    /* Animasi */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .recipe-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .recipe {
+      width: calc(25% - 20px);
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .recipe:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .recipe a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .recipe h3 {
+      margin: 0;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .recipe p {
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    footer {
+      background-color: #5cb85c;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+
+    /* Gambar utama dengan overlay */
+    .hero-image {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .recipe {
+        width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .recipe {
+        width: 100%;
+      }
+
+      .hero-text {
+        font-size: 1.1em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  {% include 'main.html' %}
+
+  <div class="hero-image">
+    <img src="{{ url_for('static', filename='gambar1.jpg') }}" alt="Gambar Utama">
+    <div class="hero-text"><i class="fas fa-utensils"></i> Resep Terfavorit Minggu Ini</div>
+  </div>
+
+  <div class="container">
+    <h1 style="text-align:center; color:#5cb85c;"><i class="fas fa-fire"></i> Resep Paling Diminati</h1>
+
+    <div class="recipe-columns">
+
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/17055473-opor-ayam-bumbu-kuning">
+          <img src="https://img-global.cpcdn.com/recipes/cf0987fcd772df4e/1360x964cq70/opor-ayam-bumbu-kuning-foto-resep-utama.webp" alt="Opor Ayam">
+          <h3>Opor Ayam</h3>
+          <p><i class="fas fa-heart"></i> Disukai 10 orang</p>
+        </a>
+      </div>
+
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/17183158-rawon">
+          <img src="https://img-global.cpcdn.com/recipes/865b2ebedaccc699/1360x964cq70/rawon-foto-resep-utama.webp" alt="Rawon">
+          <h3>Rawon</h3>
+          <p><i class="fas fa-heart"></i> Disukai 20 orang</p>
+        </a>
+      </div>
+
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/17113710-sate-lilit-ayam-keju?ref=search&search_term=sate%20lilit%20ayam">
+          <img src="https://img-global.cpcdn.com/recipes/00f7afbdfcae932a/1360x964cq70/sate-lilit-ayam-keju-foto-resep-utama.webp" alt="Sate Lilit Ayam Keju">
+          <h3>Sate Lilit Ayam Keju</h3>
+          <p><i class="fas fa-heart"></i> Disukai 20 orang</p>
+        </a>
+      </div>
+
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/17177108-nasi-goreng-bumbu-rendang?ref=search&search_term=rendang">
+          <img src="https://img-global.cpcdn.com/recipes/7aa94f5525def2d7/1360x964cq70/nasi-goreng-bumbu-rendang-foto-resep-utama.webp" alt="Nasi Goreng Bumbu Rendang">
+          <h3>Nasi Goreng Bumbu Rendang</h3>
+          <p><i class="fas fa-heart"></i> Disukai 20 orang</p>
+        </a>
+      </div>
+
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/17190947-soto-seger-boyolali?ref=search&search_term=soto">
+          <img src="https://img-global.cpcdn.com/recipes/99f09954a2d159dd/640x640sq70/photo.webp" alt="Cumi Bakar Teflon Bumbu Meranggi">
+          <h3>Cumi Bakar Teflon Bumbu Maranggi</h3>
+          <p><i class="fas fa-heart"></i> Disukai 20 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/recipe/images/45f7790e85a9ed8a">
+          <img src="https://img-global.cpcdn.com/recipes/45f7790e85a9ed8a/1360x964cq70/sop-iga-sapi-foto-resep-utama.webp" alt="Sop Iga Sapi">
+          <h3>Sop Iga Sapi</h3>
+          <p><i class="fas fa-heart"></i> Disukai 2 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/16680450-bebek-ireng-pedas-khas-madura?ref=search&search_term=bebek%20hitam">
+          <img src="https://img-global.cpcdn.com/recipes/211435014d5f42c9/1360x964cq70/bebek-ireng-pedas-khas-madura-foto-resep-utama.webp" alt="Bebek Ireng Pedas Khas Madura">
+          <h3>Bebek Ireng Pedas Khas Madura</h3>
+          <p><i class="fas fa-heart"></i> Disukai 2 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/24031082?ref=search&find_method=search_top&search_term=sayur+asem+jawa">
+          <img src="https://img-global.cpcdn.com/recipes/a3709872496bed64/1280x1280sq80/photo.webp" alt="Sayur Asam khas Pekalongan">
+          <h3>Sayur Asam khas Pekalongan</h3>
+          <p><i class="fas fa-heart"></i> Disukai 3 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/24882038?ref=search&search_term=TELUR">
+          <img src="https://img-global.cpcdn.com/recipes/32a1fde3b5e8326e/600x852f0.5_0.49988_1.0q80/gulai-telur-ceplok-foto-resep-utama.webp" alt="Gulai Telur Ceplok">
+          <h3>Gulai Telur Ceplok</h3>
+          <p><i class="fas fa-heart"></i> Disukai 2 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/24862549?ref=search&search_term=sup+telur">
+          <img src="https://img-global.cpcdn.com/recipes/f2b0127bfbf912a1/600x852f0.5_0.568518_1.0q80/egg-drop-soup-foto-resep-utama.webp" alt="Egg Drop Soup">
+          <h3>Egg Drop Soup</h3>
+          <p><i class="fas fa-heart"></i> Disukai 2 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/24874245?ref=search&search_term=AYAM">
+          <img src="https://img-global.cpcdn.com/recipes/c844a97019020005/600x852f0.5_0.5_1.0q80/ayam-mentega-foto-resep-utama.webp" alt="Ayam Mentega">
+          <h3>Ayam Mentega</h3>
+          <p><i class="fas fa-heart"></i> Disukai 2 orang</p>
+        </a>
+      </div>
+      <div class="recipe">
+        <a href="https://cookpad.com/id/resep/24887758?ref=search&search_term=ayam+woku">
+          <img src="https://img-global.cpcdn.com/recipes/493cde3837587e4e/600x852f0.5_0.524595_1.0q80/ayam-woku-foto-resep-utama.webp" alt="Ayam Woku">
+          <h3>Ayam Woku</h3>
+          <p><i class="fas fa-heart"></i> Disukai 21 orang</p>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <p><i class="fas fa-leaf"></i> &copy; 2025 Eva Fadhillah Ulia.</p>
+    </div>
+  </footer>
+  
+
+</body>
+</html>
